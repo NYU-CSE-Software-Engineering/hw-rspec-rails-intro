@@ -18,7 +18,7 @@ the Rails URL helper method (ending in `_path`) for the route. Additionally, inc
 Now, all is dandy, and we can supposedly search movies in the TMDb. But there is no way we can go to and return back to 
 the home page without manually changing the URI. Add a button that will take user to search page and add a button to 
 bring them back to the homepage. Take a look at how users navigate back in the existing view `show.html.erb` for 
-inspiration. Do we have all the neccessary pieces to go to `/search` now? (You may need to wait until 
+inspiration. Do we have all the necessary pieces to go to `/search` now? (You may need to wait until 
 [Part 2](Part-2.md) before you can try this in your own browser).
 
 ## Starting Testing
