@@ -107,8 +107,8 @@ these types of requests as well, just the way we did in `spec_helper.rb` for a g
 
 As a final step we need to display all the returned movies in a table, much like we did in the home page in prior 
 CHIPS. Following a similar schematic as in the `index.html.erb` view, create a table where all the query results 
-will go. The table you create should have and id set to `search_movies`. **Note**: when do we actually want to 
-display this table (should the table still be displayed if an error occurs?).
+will go. The table you create should have an id set to `search_movies`. **Note**: When do we actually want to 
+display this table? Should the table still be displayed if an error occurs?
 
 ![pic1](lib/assets/query-result-movies.png)
 
