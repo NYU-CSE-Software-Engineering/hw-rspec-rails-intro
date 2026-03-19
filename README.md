@@ -9,16 +9,18 @@ tests that exercise code that communicates with an external service. The basic f
 write a test that fails (red), add code to make that test pass (green), look for opportunities to clean up your code 
 and tests (refactor), repeat until all test cases are done.
 
-The assignment is a divided into the following parts:
+The assignment is divided into the following five parts:
 
 1. Basic setup of RSpec and Guard, and how to manually and automatically run specs
 2. From red to green: getting the first spec to pass
 3. From green to refactor: more controller specs and DRYing out tests
 4. The model spec: stubbing the Internet with Webmock
+5. Additional material provided in Part 5
 
 ## Parts
 - [Part 1 - TDD drives creating route, view, and controller method](Part-1.md)
 - [Part 2 - Getting the first spec to pass](Part-2.md)
 - [Part 3- More controller behaviors](Part-3.md)
 - [Part 4 - TDD for the Model](Part-4.md)
+- [Part 5](Part-5.md)
 - [Submission-Instructions](Submission-Instructions.md)
