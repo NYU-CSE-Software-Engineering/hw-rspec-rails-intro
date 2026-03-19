@@ -42,7 +42,7 @@ displayed in the desired style (well, almost, what should the value of key be? y
 The `find_in_tmdb` method should return a list of movies that have NOT been saved to the database. A slight nuance 
 with TMDb API is that it actually does not return a MPAA rating on a query for movie lookups. This would need to be 
 done in a separate API call, so we will not require displaying the correct ratings and you should just put "R" for 
-all of them (to be safe). Curious readers are encourages to try fetching the correct ratings, but this will not be 
+all of them (to be safe). Curious readers are encouraged to try fetching the correct ratings, but this will not be 
 tested in the autograder (you may need to lookup how ratings are stored as numbers in TMDb). 
 
 ## Stubbing API calls
