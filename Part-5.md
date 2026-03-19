@@ -5,7 +5,7 @@
 Storing API keys falls under the general category of credential management, and in past versions of `rails`, it has 
 been done in a variety of ways. Since you only have one API key to store, we will forgo the process of securing your
 credentials in an environment file, although this is a must for any real app you deploy. You can store your API key as
-a parameter to the  model method `find_in_tmdb` with some default value (possibly the correct API key). This will let 
+a parameter to the model method `find_in_tmdb` with some default value (possibly the correct API key). This will let 
 you overwrite the API key with an invalid one when you are testing. 
 
 If you push your code to GitHub, make sure the repo is set to a private mode (as it should be!) since GitHub will 
@@ -38,10 +38,10 @@ displayed in the desired style (well, almost, what should the value of key be? y
 <% end %>
 ```
 The `find_in_tmdb` method should return a list of movies that have NOT been saved to the database. A slight nuance 
-with TMDb API is that it actually does not return a MPAA rating on a query for movie lookups. This would need to be 
-done in a separate API call, so we will not require displaying the correct ratings and you should just put "R" for 
+with TMDb API is that it actually does not return an MPAA rating on a query for movie lookups. This would need to be 
+done in a separate API call, so we will not require displaying the correct ratings, and you should just put "R" for 
 all of them (to be safe). Curious readers are encouraged to try fetching the correct ratings, but this will not be 
-tested in the autograder (you may need to lookup how ratings are stored as numbers in TMDb). 
+tested in the autograder (you may need to look up how ratings are stored as numbers in TMDb). 
 
 ## Stubbing API calls
 
@@ -66,7 +66,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 ```
 The first line requires the installed gem, and the second line disables any web requests. After you have done this,
 make sure to include `spec_helper.rb` in the movie spec by calling `require 'spec_helper'`. What happens when we
-run models tests now? You may need to update the one test we included earlier; although we are expecting Faraday to be
+run the model tests now? You may need to update the one test we included earlier; although we are expecting Faraday to be
 called, the exact parameter is not important for this initial test (which is just making sure that Faraday is
 receiving _some_ call). Update the `find_in_tmdb` call so that its argument resembles a more realistic argument, then
 remove the `.with` call (since it's not as obvious anymore exactly what URL Faraday will be called with).
@@ -74,13 +74,13 @@ remove the `.with` call (since it's not as obvious anymore exactly what URL Fara
 Let's be more explicit now. Add a new test which directly calls `Movie.find_in_tmdb`.
 
 ```ruby
-it 'calls Tmdb with valid API key' do
-   Movie.find_in_tmdb({title: "hacker", language: "en"})
+it 'calls TMDb with valid API key' do
+  Movie.find_in_tmdb({title: "hacker", language: "en"})
 end
 ```
 What happens when you run the spec now? You should get an error message approximately equivalent to something like 
 `WebMock::NetConnectNotAllowedError:
-       Real HTTP connections are disabled`. Yay, we are successfully blocking real HTTP requests in the spec, but how do we actually get data from the TMDb now? We don't, that is the entire point of stubbing an external call. Instead we will use a predefined response body which will be accessible for all tests in the movie spec. In `spec_helper.rb` go ahead and add the following block.
+      Real HTTP connections are disabled`. Yay, we are successfully blocking real HTTP requests in the spec, but how do we actually get data from the TMDb now? We don't, that is the entire point of stubbing an external call. Instead we will use a predefined response body which will be accessible for all tests in the movie spec. In `spec_helper.rb` go ahead and add the following block.
 
 ```ruby
 RSpec.configure do |config|
@@ -88,7 +88,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     stub_request(:get, /api.themoviedb.org/).
-      with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Faraday v1.8.0'}).
+      with(headers: {'Accept'=>'*/*'}).
       to_return(status: 200, body: JSON.generate(json_return), headers: {})
   end
 end
@@ -121,7 +121,7 @@ the table. The form should contain all the fields necessary to make a movie (i.e
 > [!TIP]
 > To add input elements without displaying them on the view, consider using `hidden_field_tag`. 
 
-Since this _Add movie_ button makes a [redacted] request, you will need to create a route and a controller action for 
+Since this _Add movie_ button makes a POST request, you will need to create a route and a controller action for 
 it. Name these `add_movie`, and make sure to write tests as we did with `search_tmdb`, it will pay off later on!
 
 In the controller method, save the movie object with the specified parameters to the database, and after, redirect to 

@@ -1,15 +1,16 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
-gem 'rails', '4.2.11'
-gem 'ffi', '1.14.2'
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails", "~> 7.1.5"
 
-gem 'sass-rails', '~> 5.0.3'
-gem 'uglifier', '>= 2.7.1'
+gem 'ffi'
+
+gem 'sass-rails'
+gem 'uglifier'
 
 gem 'jquery-rails'
-gem 'bigdecimal', '1.3.5'
-gem 'web-console', '~> 2.0'
+gem 'bigdecimal'
+gem 'web-console'
 
 # for Heroku deployment - as described in Ap. A of ELLS book
 group :development, :test do
@@ -19,12 +20,14 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'faraday'
+  gem 'guard'
 
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.3.6'
+  gem "sqlite3", ">= 1.4"
 end
 
 group :production do
-  gem 'pg', '~> 0.2'
+  gem "pg", "~> 1.6"
   gem 'rails_12factor'
 end

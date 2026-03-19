@@ -18,7 +18,7 @@ When you run this spec (or `guard` runs it for you), it will fail miserably, bec
 `GET /search` (and even if there was a route, there would be no controller action defined to receive it).
 
 > [!IMPORTANT]
-> Before you continue, make sure the above spec passes green.**
+> Before you continue, make sure the above spec passes green.
 
 Put another way, that one line of test code drove us to ensure that our new controller method and the view it will 
 ultimately render have the correct names and have a matching route. Can you go to /search now?
