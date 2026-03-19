@@ -72,7 +72,7 @@ Now that you have a basic idea of the API call you're going to use, and an API k
 Before we start using Faraday, let's make sure we have a solid understanding on how to construct RESTful URIs for 
 accessing movies in TMDb. Write two URIs that would make a <code>GET</code> request to TMDb. The first one should 
 search for the movie Manhunter released on 1986 (i.e. include the title of the movie as well as the release year), 
-and the second one should look for the movie Gone Girl with the langauge set to English. 
+and the second one should look for the movie Gone Girl with the language set to English. 
   </summary>
   <blockquote>
     URI1:
