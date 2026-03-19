@@ -93,6 +93,7 @@ Now, let's test our understanding of Faraday. How would we make a GET request us
   </blockquote>
 </details>
 <br>
+
 What's the return type of the Faraday <code>GET</code> request? Is it JSON? Well, almost. It's actually a stringified 
 version of JSON, so once we get the results of the API call, we will need to parse them with <code>JSON.parse</code>. 
 We usually store the result of an API call in <code>response</code> variable. To better understand the structure of 
@@ -166,10 +167,10 @@ class to make it pass.
 require 'rails_helper'
 
 describe Movie do
-  describe 'searching Tmdb by keyword' do
-    it 'calls Faraday gem with CS169 domain' do
-      expect(Faraday).to receive(:get).with('https://cs169.org')
-      Movie.find_in_tmdb('https://cs169.org')
+  describe 'searching TMDB by keyword' do
+    it 'calls Faraday gem with NYU domain' do
+      expect(Faraday).to receive(:get).with('https://nyu.edu')
+      Movie.find_in_tmdb('https://nyu.edu')
     end
   end
 end

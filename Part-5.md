@@ -11,9 +11,7 @@ you overwrite the API key with an invalid one when you are testing.
 If you push your code to GitHub, make sure the repo is set to a private mode (as it should be!) since GitHub will 
 automatically detect exposed API keys and inform the provider. Storing plain API keys on a public domain will result 
 in losing the API key. If you are not updating your GitHub repo as we go, you shall not worry about this, instead you 
-will be deploying to Heroku directly. You will get more direct exposure with working with credentials in the right way 
-in the final project (CHIP 10.5). There, you will actually have to secure and store a number of API keys and 
-credentials.
+will be deploying to Heroku directly.
 
 ## Implementing TMDb search
 

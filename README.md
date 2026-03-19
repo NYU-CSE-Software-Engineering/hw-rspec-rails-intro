@@ -15,12 +15,11 @@ The assignment is divided into the following five parts:
 2. From red to green: getting the first spec to pass
 3. From green to refactor: more controller specs and DRYing out tests
 4. The model spec: stubbing the Internet with Webmock
-5. Additional material provided in Part 5
 
 ## Parts
 - [Part 1 - TDD drives creating route, view, and controller method](Part-1.md)
 - [Part 2 - Getting the first spec to pass](Part-2.md)
 - [Part 3- More controller behaviors](Part-3.md)
 - [Part 4 - TDD for the Model](Part-4.md)
-- [Part 5](Part-5.md)
+- [Part 5 - Implementing find_in_tmdb, and Stubbing the Internet](Part-5.md)
 - [Submission-Instructions](Submission-Instructions.md)

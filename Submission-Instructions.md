@@ -1,9 +1,10 @@
 # Submission Instructions
 
-You will be tested on both correctness and testability of your app. Deploy your app to Heroku using the same technique 
-as in CHIPS 5.3 (you may need a force push!). You should set up the database as well, running the appropriate database 
-setup commands on the Heroku server. Once you are confident the functionality works correctly on Heroku, submit the URI 
-of your deployed app in a text file called `rottenpotatoes-url.txt` with no other contents.
+You will be tested on both correctness and testability of your app. Deploy your app to Heroku or Render (or really any
+PaaS service) using the same technique as in CHIP 5.3 (you may need a force push!). You should set up the database as 
+well, running the appropriate database setup commands on the PaaS server (Heroku or Render). Once you are confident 
+the functionality works correctly on Heroku, submit the URI of your deployed app in a text file called 
+`rottenpotatoes-url.txt` with no other contents.
 
 > [!WARNING]
 > Please be careful to use **https** and not **http**, that is, submit `https://your-app.herokuapp.com` 
