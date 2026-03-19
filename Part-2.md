@@ -11,7 +11,7 @@ end
 
 This example shows that RSpec for Rails includes a method `get` that simulates doing an HTTP GET to your app. The hash 
 argument represents the exact contents of `params[]` that your app would see, so if you are using a form helper (like 
-`form_tag_helper`) to construct the forms, you need to know what the HTML field names will be so that you can pass the 
+`form_tag`) to construct the forms, you need to know what the HTML field names will be so that you can pass the 
 correct values in this hash.
 
 When you run this spec (or `guard` runs it for you), it will fail miserably, because there is no route that matches 
