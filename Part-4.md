@@ -125,8 +125,8 @@ results. Then, answer the following questions.
   extensions</a> to help manage date and time objects.
 </summary>
 <blockquote>
-  <code>Date.parse(response.results[0].release_date)</code> or
-  <code>response.results[0].release_date.to_date</code>
+   <code>Date.parse(response['results'][0]['release_date'])</code> or
+   <code>response['results'][0]['release_date'].to_date</code>
 </blockquote>
 </details>
 
