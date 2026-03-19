@@ -17,7 +17,7 @@ direct method would be to use the `URI` class in the Ruby standard library to co
 `Net::HTTP` class to issue the request to TMDb, check for errors in the response, and if all is well, and parse 
 the resulting JSON object. But sometimes we can be more productive by standing on the shoulders of others, as we 
 can in this case by using a library (or in the Ruby world, a gem). The gem `faraday` is an HTTP library that provides 
-interface over `Net:HTTP`. There is also `themoviedb-api` gem, which is a user-contributed Ruby "wrapper" around 
+interface over `Net::HTTP`. There is also `themoviedb-api` gem, which is a user-contributed Ruby "wrapper" around 
 TMDb's RESTful API, mentioned on the TMDb API documentation pages. Not every RESTful API has a corresponding Ruby 
 library, so we will rely on Faraday to learn a general technique which can be used for all sorts of RESTful APIs. 
 
