@@ -13,13 +13,14 @@ starter file in `search_tmdb.html.erb` but it's currently missing two things. Fi
 be submitted with, and second a button that takes us back to the home page. 
 
 Include the route path and method (what type of request are we making?) in the `form_tag` provided in the view. Use 
-the Rails URL helper method (ending in `_path`) for the route. Additionally, include an id field for the form tag with `tmdb_form`. 
+the Rails URL helper method (ending in `_path`) for the route. Additionally, include an id field for the form tag 
+with `tmdb_form`. 
 
-Now, all is dandy, and we can supposedly search movies in the TMDb. But there is no way we can go to and return back to 
-the home page without manually changing the URI. On the home page, add a button (or link) that will take the user to the
-search page, and in the search view add a button (or link) to bring them back to the homepage. Take a look at how 
-users navigate back in the existing view `show.html.erb` for inspiration. Do we have all the necessary pieces to go 
-to `/search` now? (You may need to wait until [Part 2](Part-2.md) before you can try this in your own browser).
+Now, all is dandy, and we can supposedly search movies in the TMDb. But there is no way we can go to and return back 
+to the home page without manually changing the URI. On the home page, add a button (or link) that will take the user 
+to the search page, and in the search view add a button (or link) to bring them back to the homepage. Take a look at 
+how users navigate back in the existing view `show.html.erb` for inspiration. Do we have all the necessary pieces to 
+go to `/search` now? (You may need to wait until [Part 2](Part-2.md) before you can try this in your own browser).
 
 ## Starting Testing
 
@@ -53,43 +54,6 @@ describe MoviesController do
   end
 end
 ```
-
-[//]: # (**Side note**: Ruby version 2.6.6 with Rails 4.2.11 has a unique bug that may or may not appear when your 
-run the controller tests. If you see errors with a keyword `ThreadError` include the following code snippet at the top 
-of `movies_controller_spec.rb`, after the `require` method call. This a clever hack that uses monkey-patching to 
-resolve errors at runtime. )
-
-[//]: # (```ruby)
-
-[//]: # (if RUBY_VERSION>='2.6.0')
-
-[//]: # (  if Rails.version < '5')
-
-[//]: # (    class ActionController::TestResponse < ActionDispatch::TestResponse)
-
-[//]: # (      def recycle!)
-
-[//]: # (        # hack to avoid MonitorMixin double-initialize error:)
-
-[//]: # (        @mon_mutex_owner_object_id = nil)
-
-[//]: # (        @mon_mutex = nil)
-
-[//]: # (        initialize)
-
-[//]: # (      end)
-
-[//]: # (    end)
-
-[//]: # (  else)
-
-[//]: # (    puts "Monkeypatch for ActionController::TestResponse no longer needed")
-
-[//]: # (  end)
-
-[//]: # (end)
-
-[//]: # (```)
 
 Line 3 says that the following specs **describe** the behavior of the `MoviesController` class. Because this class has 
 several methods, line 4 says that this first set of specs describes the behavior of the method that searches TMDb. 

@@ -1,5 +1,40 @@
 # Part 5 - Implementing `find_in_tmdb`, and Stubbing the Internet
 
+## Storing API Keys Securely with Environment Variables
+
+Hard-coding an API key directly into your source code is a serious security mistake. If you ever push your code to 
+a public repo, GitHub will automatically detect exposed API keys and inform the provider. Storing plain API keys on a 
+public domain will result in losing the API key. Even in a private repo, committing credentials is poor practice 
+because it makes rotating keys painful and risks accidental exposure later.
+
+The best approach is to store your API key as an environment variable: a named value that lives in the process's 
+environment rather than in your code. Your Ruby code reads it at runtime, so the key itself never appears in your 
+source files.
+
+## Setting the variable locally with Docker
+
+When you start your container with `docker run`, pass the key using the `-e` flag:
+
+```bash
+docker run -it -v "$(pwd):/app" -p 3000:3000 -e TMDB_API_KEY=your_key_here rspec
+```
+
+The key is now available inside the container as `ENV['TMDB_API_KEY']` for the lifetime of that container session. 
+Notice it never touches any file in your project directory.
+
+## Setting the variable through `.env`
+
+If you get tired of typing the key every time, you can instead store it in a local `.env` file:
+
+```bash
+TMDB_API_KEY=your_key_here
+```
+And load it automatically with Docker's `--env-file` flag instead:
+
+```bash
+docker run -it -v "$(pwd):/app" -p 3000:3000 --env-file .env rspec
+```
+
 ## Storing API keys
 
 Storing API keys falls under the general category of credential management, and in past versions of `rails`, it has 
@@ -12,6 +47,30 @@ If you push your code to GitHub, make sure the repo is set to a private mode (as
 automatically detect exposed API keys and inform the provider. Storing plain API keys on a public domain will result 
 in losing the API key. If you are not updating your GitHub repo as we go, you shall not worry about this, instead you 
 will be deploying to Heroku directly.
+
+## Setting the variable on Heroku
+
+Heroku has a built-in way to store secrets called [config vars](https://devcenter.heroku.com/articles/config-vars). 
+From your terminal:
+
+```bash
+heroku config:set TMDB_API_KEY=your_key_here
+```
+
+Heroku stores this securely and automatically injects it as an environment variable every time your app boots. You 
+can verify it was set correctly:
+
+```bash
+heroku config:get TMDB_API_KEY
+```
+
+## Setting the variable on Render
+
+If you're deploying on Render instead, the process is done through the dashboard rather than the CLI. Navigate to your 
+service, click Environment in the left sidebar, then click + Add Environment Variable. Enter `TMDB_API_KEY` as the 
+key and your API key as the value, then click Save, rebuild, and deploy. Render will securely store the value and make
+it available as `ENV['TMDB_API_KEY']`. See 
+[Render's environment variable docs](https://render.com/docs/configure-environment-variables) for more information.
 
 ## Implementing TMDb search
 
