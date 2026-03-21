@@ -40,8 +40,10 @@ earlier in the course. In particular, familiarize yourself with the Search and Q
   made-for-TV movie "This Life + 10". (Don't forget to <a href="https://en.wikipedia.org/wiki/Percent-encoding">
   escape nonalphanumeric characters in the URI</a>. Here are two <a href="https://www.url-encode-decode.com">online</a> 
   <a href="http://www.utilities-online.info/urlencode">tools</a> to help you do this. Ruby's 
-  <a href="https://ruby-doc.org/stdlib/libdoc/uri/rdoc/URI/Escape.html"><code>URI.escape function</code></a> can also 
-do this programmatically, as in <code>URI::escape('https://some.url.com/etc.')</code>.
+  <a href="https://docs.ruby-lang.org/en/3.3/CGI/Escape.html"><code>CGI::Escape</code> module's 
+  <code>escape</code> function</a> can also do this programmatically, as in 
+  <code>puts CGI.escape('https://some.url.com/etc.')</code>.  (Be sure to use <code>require 'cgi'</code> to access the
+  module!)
 </summary>
 <p>
 <blockquote>
@@ -51,6 +53,7 @@ do this programmatically, as in <code>URI::escape('https://some.url.com/etc.')</
   shortcut, would be <code>https://api.themoviedb.org/3/search/movie?api_key=5678&amp;query=this+life+%2B+10</code>.
 </blockquote></p>
 </details>
+<br/>
 
 <details>
 <summary>
@@ -82,7 +85,7 @@ and the second one should look for the movie Gone Girl with the language set to 
   </blockquote>
   
 </details>
-<br>
+<br/>
 
 <details>
  <summary>
@@ -92,7 +95,7 @@ Now, let's test our understanding of Faraday. How would we make a GET request us
     <code>Faraday.get url</code> where url can be either one of the URIs we defined in the previous step.
   </blockquote>
 </details>
-<br>
+<br/>
 
 What's the return type of the Faraday <code>GET</code> request? Is it JSON? Well, almost. It's actually a stringified 
 version of JSON, so once we get the results of the API call, we will need to parse them with <code>JSON.parse</code>. 
@@ -108,6 +111,7 @@ results. Then, answer the following questions.
   <code>response.results[0]</code> or <code>response.results.first</code>
 </blockquote>
 </details>
+<br/>
 
 <details>
 <summary>
@@ -117,6 +121,7 @@ results. Then, answer the following questions.
   <code>overview = response.results[0].overview</code>
 </blockquote>
 </details>
+<br/>
 
 <details>
 <summary>
@@ -129,7 +134,7 @@ results. Then, answer the following questions.
    <code>response['results'][0]['release_date'].to_date</code>
 </blockquote>
 </details>
-
+<br/>
 
 <details>
   <summary>
@@ -142,6 +147,7 @@ results. Then, answer the following questions.
    without a special library.
   </blockquote></p>
 </details>
+<br/>
 
 <details>
   <summary>
@@ -177,7 +183,7 @@ end
 ```
 
 ```ruby
-class Movie < ActiveRecord::Base
+class Movie < ApplicationRecord
 
   def self.find_in_tmdb(string)
     Faraday.get(string)

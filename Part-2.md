@@ -5,7 +5,7 @@ block is an actual test case. Modify the first example to look like this:
 
 ```ruby
 it 'calls the model method that performs TMDb search' do
-  get :search_tmdb, {:search_terms => 'hardware'}
+  get :search_tmdb, params: { search_terms: 'hardware' }
 end
 ```
 
@@ -64,7 +64,7 @@ it 'calls the model method that performs TMDb search' do
   fake_results = [double('movie1'), double('movie2')]
   expect(Movie).to receive(:find_in_tmdb).with('hardware').
     and_return(fake_results)
-  get :search_tmdb, {:search_terms => 'hardware'}
+  get :search_tmdb, params: { search_terms: 'hardware' }
 end
 ```
 

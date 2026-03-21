@@ -46,7 +46,7 @@ three expectations articulated above. (By convention over configuration, RSpec e
 ```ruby
 require 'rails_helper'
 
-describe MoviesController do
+describe MoviesController, type: :controller do
   describe 'searching TMDb' do
     it 'calls the model method that performs TMDb search'
     it 'selects the Search Results template for rendering'
